@@ -1,12 +1,11 @@
 # defaults file for haproxy
 ---
-haproxy_use_ppa: true
 haproxy_version: 1.8
 
 haproxy_dependencies:
   - name: haproxy
     state: latest
-haproxy_install: []
+
 
 haproxy_restart_handler_state: restarted
 
@@ -36,6 +35,7 @@ haproxy_global_ssl_default_server_ciphersuites: ''
 haproxy_global_ssl_default_server_options: 'no-sslv3'
 haproxy_global_nbproc: 1
 haproxy_global_option: []
+
 
 # defaults section
 haproxy_defaults_log: global
