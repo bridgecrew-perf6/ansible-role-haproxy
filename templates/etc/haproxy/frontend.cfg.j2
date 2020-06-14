@@ -61,6 +61,12 @@ frontend {{ frontend.name }}
   http-response {{ http_response.action }}{% if http_response.param is defined %} {{ http_response.param }}{% endif %}{% if http_response.cond is defined %} {{ http_response.cond }}{% endif %}
 
 {% endfor %}
+{% for action in ['reqrep', 'reqirep', 'rsprep', 'rspirep'] %}
+{% for params in frontend[action] | default([]) %}
+  {{ action }} {{ params.search }} {{ params.string }}{% if params.cond is defined %} {{ params.cond }}{% endif %}
+
+{% endfor %}
+{% endfor %}
 {% for action in ['reqadd', 'rspadd'] %}
 {% for params in frontend[action] | default([]) %}
   {{ action }} {{ params.string }}{% if params.cond is defined %} {{ params.cond }}{% endif %}
@@ -70,12 +76,6 @@ frontend {{ frontend.name }}
 {% for action in ['reqdel', 'reqidel', 'rspdel', 'rspidel'] %}
 {% for params in frontend[action] | default([]) %}
   {{ action }} {{ params.search }}{% if params.cond is defined %} {{ params.cond }}{% endif %}
-
-{% endfor %}
-{% endfor %}
-{% for action in ['reqrep', 'reqirep', 'rsprep', 'rspirep'] %}
-{% for params in frontend[action] | default([]) %}
-  {{ action }} {{ params.search }} {{ params.string }}{% if params.cond is defined %} {{ params.cond }}{% endif %}
 
 {% endfor %}
 {% endfor %}
@@ -89,10 +89,12 @@ frontend {{ frontend.name }}
 {% if frontend.use_backend is defined %}
 {% if frontend.use_backend is iterable and frontend.use_backend is not string %}
 {% for use_backend in frontend.use_backend | default([]) %}
-  use_backend {{ use_backend }}
+  use_backend {{ use_backend.name }}{% if use_backend.cond is defined %} {{ use_backend.cond }}{% endif %}
+
 {% endfor %}
 {% else %}
-  use_backend {{ frontend.use_backend }}
+  use_backend {{ frontend.use_backend.name }}{% if frontend.use_backend.cond is defined %} {{ frontend.use_backend.cond }}{% endif %}
+
 {% endif %}
 {% endif %}
 {% if frontend.default_backend is defined %}
@@ -104,4 +106,5 @@ frontend {{ frontend.name }}
 {% for line in frontend.raw_options | default([]) %}
   {{ line }}
 {% endfor %}
+
 {% endfor %}

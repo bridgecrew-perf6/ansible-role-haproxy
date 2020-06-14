@@ -7,7 +7,9 @@ backend {{ backend.name }}
   bind-process {{ backend.bind_process | join(' ') }}
 {% endif %}
   mode {{ backend.mode }}
+{% if backend.balance is defined %}
   balance {{ backend.balance }}
+{% endif %}
 {% if backend.source is defined %}
   source {{ backend.source }}
 {% endif %}
@@ -121,4 +123,5 @@ backend {{ backend.name }}
 {% for line in backend.raw_options | default([]) %}
   {{ line }}
 {% endfor %}
+
 {% endfor %}
