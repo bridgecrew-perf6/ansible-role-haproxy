@@ -125,3 +125,14 @@ backend {{ backend.name }}
 {% endfor %}
 
 {% endfor %}
+{% for backend in backendacl | default([])%}
+{% if backend.ip is defined %}
+backend {{ backend.name }}
+  mode http
+  balance roundrobin
+{% for server in backend.ip | default([])%}
+  server {{backend.name}}-{{ loop.index }} {{ server }}:443 check ssl ca-file {{ haproxy_selfca_file }}
+{% endfor %}
+
+{% endif %}
+{% endfor %}

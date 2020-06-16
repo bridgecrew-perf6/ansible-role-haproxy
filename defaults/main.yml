@@ -6,6 +6,7 @@ haproxy_dependencies:
   - name: haproxy
     state: latest
 
+haproxy_selfca_file: /etc/ssl/haproxy/haproxy.pem
 
 haproxy_restart_handler_state: restarted
 
