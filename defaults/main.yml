@@ -1,18 +1,13 @@
 # defaults file for haproxy
 ---
 haproxy_version: 1.8
-
 haproxy_dependencies:
   - name: haproxy
     state: latest
 
 haproxy_selfca_file: /etc/ssl/haproxy/haproxy.pem
-
 haproxy_restart_handler_state: restarted
-
 haproxy_conf_template: "etc/haproxy/haproxy.cfg.j2"
-
-# global section
 haproxy_global_log:
   - address: /dev/log
     facility: local0
@@ -23,6 +18,7 @@ haproxy_global_stats:
   sockets:
     - listen: /run/haproxy/admin.sock
   timeout: 30s
+
 haproxy_global_user: haproxy
 haproxy_global_group: haproxy
 haproxy_global_daemon: true
@@ -37,8 +33,6 @@ haproxy_global_ssl_default_server_options: 'no-sslv3'
 haproxy_global_nbproc: 1
 haproxy_global_option: []
 
-
-# defaults section
 haproxy_defaults_log: global
 haproxy_defaults_mode: http
 haproxy_defaults_option:
@@ -68,23 +62,10 @@ haproxy_defaults_errorfile:
   - code: 504
     file: /etc/haproxy/errors/504.http
 
-# ssl (file) map
 haproxy_ssl_map: []
-
-# listen section
 haproxy_listen: []
-
-# front-end section
 haproxy_frontend: []
-
-# back-end section
 haproxy_backend: []
-
-# user-lists section
 haproxy_userlists: []
-
-# resolvers section:
 haproxy_resolvers: []
-
-# ACL files
 haproxy_acl_files: []

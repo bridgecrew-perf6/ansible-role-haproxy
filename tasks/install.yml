@@ -1,6 +1,6 @@
 # tasks file for haproxy
 ---
-- name: installing haproxy
+- name: install | installing haproxy
   apt:
     name: "{{ item.name }}"
     state: "{{ item.state }}"

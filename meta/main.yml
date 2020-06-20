@@ -1,19 +1,15 @@
-# meta file for haproxy
 ---
 galaxy_info:
   role_name: haproxy
-  author: Mischa ter Smitten
-  company: Oefenweb.nl B.V.
-  description: Set up the latest version of HAProxy in Ubuntu systems
-  license: MIT
+  author: Mischa ter Smitten forked by Elukerio
+  company: Oefenweb.nl B.V. used by Elukerio
+  description: Set up the latest version of HAProxy
+  license: GPLv3
   min_ansible_version: 2.6.0
   platforms:
-    - name: Ubuntu
+    - name: all
       versions:
-        - precise
-        - trusty
-        - xenial
-        - bionic
+        - all
   galaxy_tags:
     - system
     - clustering
