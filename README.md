@@ -1,6 +1,6 @@
 # Ansible Role - HAProxy
 
-Permet de déployer HAProxy, role forké par Elukerio.
+Ansible role allowing to deploy HAProxy, role forked by Elukerio and modified by Pierre Coimbra.
 
 ### Requirements
 - `python-apt`
@@ -159,4 +159,4 @@ GPLv3 - Elukerio
 
 Mischa ter Smitten (based on work of [FloeDesignTechnologies](https://github.com/FloeDesignTechnologies))
 
-Forked by Elukerio in June 2020
+Forked by Elukerio in June 2020. Modified by Pierre Coimbra

@@ -7,3 +7,7 @@
   with_items: "{{ haproxy_dependencies }}"
   tags:
     - haproxy-install-dependencies
+
+- name: install | generate dhparams
+  shell: openssl dhparam -out /etc/haproxy/dhparams.pem 4096
+  when: haproxy_global_dhparams|bool

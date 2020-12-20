@@ -81,3 +81,6 @@ peers {{ peers.name }}
 {% for line in haproxy_global_raw_options | default([]) %}
   {{ line }}
 {% endfor %}
+{% if haproxy_global_dhparams is defined and haproxy_global_dhparams%}
+ssl-dh-param-file /etc/haproxy/dhparams.pem
+{% endif %}

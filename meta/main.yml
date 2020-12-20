@@ -1,18 +1,15 @@
 ---
 galaxy_info:
   role_name: haproxy
-  author: Mischa ter Smitten forked by Elukerio
-  company: Oefenweb.nl B.V. used by Elukerio
-  description: Set up the latest version of HAProxy
+  author: Mischa ter Smitten forked by Pierre Coimbra for Elukerio
+  company: Oefenweb.nl B.V. forked by Elukerio
+  description: Ansible role allowing to deploy HAProxy
   license: GPLv3
-  min_ansible_version: 2.6.0
+  min_ansible_version: 2.1
   platforms:
-    - name: all
+    - name: debian
       versions:
-        - all
+        - buster
   galaxy_tags:
-    - system
-    - clustering
-    - networking
-    - web
+    - haproxy
 dependencies: []

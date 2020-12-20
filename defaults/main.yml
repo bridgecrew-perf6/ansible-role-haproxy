@@ -24,12 +24,12 @@ haproxy_global_group: haproxy
 haproxy_global_daemon: true
 haproxy_global_ca_base: /etc/ssl/certs
 haproxy_global_crt_base: /etc/ssl/private
-haproxy_global_ssl_default_bind_ciphers: 'kEECDH+aRSA+AES:kRSA+AES:+AES256:RC4-SHA:!kEDH:!LOW:!EXP:!MD5:!aNULL:!eNULL'
-haproxy_global_ssl_default_bind_ciphersuites: ''
-haproxy_global_ssl_default_bind_options: 'no-sslv3'
-haproxy_global_ssl_default_server_ciphers: 'kEECDH+aRSA+AES:kRSA+AES:+AES256:RC4-SHA:!kEDH:!LOW:!EXP:!MD5:!aNULL:!eNULL'
+haproxy_global_ssl_default_bind_ciphers: 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384'
+haproxy_global_ssl_default_bind_ciphersuites: 'TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256'
+haproxy_global_ssl_default_bind_options: 'no-sslv3 no-tlsv10 no-tlsv11 no-tls-tickets'
+haproxy_global_ssl_default_server_ciphers: 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384'
 haproxy_global_ssl_default_server_ciphersuites: ''
-haproxy_global_ssl_default_server_options: 'no-sslv3'
+haproxy_global_ssl_default_server_options: 'no-sslv3 no-tlsv10 no-tlsv11 no-tls-tickets'
 haproxy_global_nbproc: 1
 haproxy_global_option: []
 
@@ -62,6 +62,7 @@ haproxy_defaults_errorfile:
   - code: 504
     file: /etc/haproxy/errors/504.http
 
+haproxy_global_dhparams: true
 haproxy_ssl_map: []
 haproxy_listen: []
 haproxy_frontend: []
